@@ -1,3 +1,5 @@
+# Version 3.0
+
 from tkinter import *
 from tkinter.filedialog import *
 import fileinput
