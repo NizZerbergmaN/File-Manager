@@ -5,7 +5,7 @@ from tkinter import *
 from tkinter.filedialog import *
 from tkinter.messagebox import *
 import fileinput
-import chardet
+import chardet as chr
 
 
 def _open():
@@ -13,18 +13,17 @@ def _open():
     print(op)
     f = open(op, "rb")
     text = f.read()
-    chd = chardet.detect(text)
-    enc = chd.result['encoding']
-#    enc = enc.lower()
+    enc = chr.detect(text).get("encoding")
+    enc = enc.lower()
     text = ""
     print(enc)
-#    txtlbl.set(enc)
+    txtlbl.set(enc)
     f.close()
-#    f = open(op, "r", encoding=enc)
-#    content = f.read()
-#    txt.delete(1.0, END)
-#    txt.insert(END, content)
-#    f.close()
+    f = open(op, "r", encoding=enc)
+    content = f.read()
+    txt.delete(1.0, END)
+    txt.insert(END, content)
+    f.close()
 
 
 def _save():
